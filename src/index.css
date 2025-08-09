@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-light: #F7F9FC;
+    --bg-dark: #0F172A;
+    --primary-light: #4F46E5;
+    --primary-dark: #6366F1;
+    --accent-light: #10B981;
+    --accent-dark: #34D399;
+    --text-light: #111827;
+    --text-dark: #F9FAFB;
+    --surface-light: #FFFFFF;
+    --surface-dark: #1E293B;
+    --border-light: #E5E7EB;
+    --border-dark: #374151;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .theme-light {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+
+  .theme-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-light-primary dark:bg-dark-primary text-white rounded-lg font-medium hover:opacity-90 transition-all duration-200 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary focus:border-transparent;
+  }
+
+  .card {
+    @apply bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-xl shadow-sm;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-light-primary to-light-accent dark:from-dark-primary dark:to-dark-accent;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-light-primary to-light-accent dark:from-dark-primary dark:to-dark-accent bg-clip-text text-transparent;
+  }
+
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-light-primary dark:border-dark-primary;
+  }
+
+  .badge-bronze {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+  }
+
+  .badge-silver {
+    @apply bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+  }
+
+  .badge-gold {
+    @apply bg-yellow-200 text-yellow-900 dark:bg-yellow-800 dark:text-yellow-100;
+  }
+
+  .badge-mentorlegend {
+    @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
