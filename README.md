@@ -95,7 +95,7 @@ EduConnect provides a comprehensive solution through:
     └── Local Storage Integration
 ```
 
-### Backend Architecture
+### Backend Architecture - backend is uploaded in the https://github.com/Prince200510/Webathon-1.0-R2-Backend
 
 ```
 📦 Backend (Node.js + Express)
