@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { X, Upload, Image as ImageIcon, AlertCircle } from 'lucide-react';
 import axios from 'axios';
 
@@ -158,8 +159,8 @@ const QuestionForm = ({ onClose, onQuestionCreated }) => {
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
+  const modal = (
+    <div className="fixed inset-0 z-[9999] overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" onClick={onClose}></div>
 
@@ -341,6 +342,9 @@ const QuestionForm = ({ onClose, onQuestionCreated }) => {
       </div>
     </div>
   );
+
+  // Render via portal to break out of any parent stacking contexts
+  return typeof document !== 'undefined' ? ReactDOM.createPortal(modal, document.body) : modal;
 };
 
 export default QuestionForm;

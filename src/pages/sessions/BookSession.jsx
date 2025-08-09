@@ -492,7 +492,7 @@ function BookSession() {
                   Please click the link below to pay ₹1 for your session:
                 </p>
                 <a 
-                  href="https://razorpay.me/@edtech1/100"
+                  href="https://razorpay.me/@edtech1/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

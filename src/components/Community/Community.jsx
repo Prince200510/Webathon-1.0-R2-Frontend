@@ -190,7 +190,7 @@ const Community = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
-                  onClick={() => setShowQuestionForm(true)}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowQuestionForm(true); }}
                   className="group inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-2xl shadow-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                 >
                   <Plus className="h-6 w-6 mr-3 group-hover:rotate-90 transition-transform duration-300" />

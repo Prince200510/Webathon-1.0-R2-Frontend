@@ -36,8 +36,42 @@ function Leaderboard() {
       
       const response = await api.get(`/quizzes/leaderboard/${college}?${params}`)
       console.log('Leaderboard response:', response.data)
-      
-      setLeaderboardData(response.data.leaderboard || [])
+      const raw = response.data?.leaderboard || []
+
+      // Normalize various backend shapes into a single, consistent shape
+      const normalized = raw.map((item, idx) => {
+        const itemUser = item.user || {}
+        const srcProfile = item.profile || itemUser.profile || {}
+        const email = item.email || itemUser.email || ''
+        const first = srcProfile.firstName || itemUser.firstName || item.firstName || (email ? email.split('@')[0] : '') || 'Student'
+        const last = srcProfile.lastName || itemUser.lastName || item.lastName || 'User'
+        const profilePicture = srcProfile.profilePicture || itemUser.profilePicture
+        const collegeVal = srcProfile.college || itemUser.college || (user?.profile?.college) || 'General'
+        const gam = item.gamification || itemUser.gamification || {}
+        const points = (typeof gam.points === 'number' ? gam.points : undefined)
+          ?? (typeof item.gamificationPoints === 'number' ? item.gamificationPoints : undefined)
+          ?? (typeof item.points === 'number' ? item.points : 0)
+        const quizPoints = (typeof gam.quizPoints === 'number' ? gam.quizPoints : undefined)
+          ?? (typeof item.quizPoints === 'number' ? item.quizPoints : 0)
+        const id = item._id || itemUser._id || item.userId || `lb-${idx}`
+
+        return {
+          _id: id,
+          profile: {
+            firstName: first,
+            lastName: last,
+            profilePicture,
+            college: collegeVal
+          },
+          gamification: {
+            points: points ?? 0,
+            quizPoints: quizPoints ?? 0,
+            badge: gam.badge
+          }
+        }
+      })
+
+      setLeaderboardData(normalized)
       setUserRank(response.data.userRank || null)
     } catch (error) {
       console.error('Error fetching leaderboard:', error)
@@ -271,9 +305,9 @@ function Leaderboard() {
             </div>
           ) : (
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
-              {leaderboardData.map((entry, index) => (
+        {leaderboardData.map((entry, index) => (
                 <div 
-                  key={entry._id} 
+          key={entry._id || `row-${index}`} 
                   className={`p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors
                             ${entry._id === user?._id ? 'bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500' : ''}`}
                 >
@@ -290,7 +324,7 @@ function Leaderboard() {
                     
                     <div>
                       <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        {`${entry.profile?.firstName || ''} ${entry.profile?.lastName || ''}`.trim() || 'Unknown User'}
+                        {(entry.profile?.firstName || 'Student')} {(entry.profile?.lastName || 'User')}
                         {entry._id === user?._id && (
                           <span className="ml-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                             You
