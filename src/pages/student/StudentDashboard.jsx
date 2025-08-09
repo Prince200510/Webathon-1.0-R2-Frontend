@@ -456,4 +456,4 @@ const StudentDashboard = () => {
   )
 }
 
-export default StudentDashboard;listen now i want to deploy these project so backend will be on the render and frotned will be on the vercel so chnage he url .env file and verywhere backend url be team-duo-dare-r2b and frotned url will be team-duo-dare-r2
+export default StudentDashboard;
