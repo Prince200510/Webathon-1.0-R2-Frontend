@@ -135,7 +135,7 @@ const QuestionForm = ({ onClose, onQuestionCreated }) => {
       }
 
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/questions`,
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/questions`,
         formDataToSend,
         {
           headers: {

@@ -35,7 +35,7 @@ const QuestionDetail = ({ question: initialQuestion, onBack }) => {
   const fetchQuestionDetails = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/questions/${initialQuestion._id}`
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/questions/${initialQuestion._id}`
       );
       setQuestion(response.data.question);
       setAnswers(response.data.answers);
@@ -62,7 +62,7 @@ const QuestionDetail = ({ question: initialQuestion, onBack }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/questions/${question._id}/vote`,
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/questions/${question._id}/vote`,
         { type },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -85,7 +85,7 @@ const QuestionDetail = ({ question: initialQuestion, onBack }) => {
       setLoadingAI(true);
       const token = localStorage.getItem('token');
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/questions/${question._id}/ai-suggestion`,
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/questions/${question._id}/ai-suggestion`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setAiSuggestion(response.data.suggestion);
@@ -226,7 +226,7 @@ const QuestionDetail = ({ question: initialQuestion, onBack }) => {
                 {question.image && (
                   <div className="mt-4">
                     <img 
-                      src={`${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}${question.image}`} 
+                      src={`${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}${question.image}`} 
                       alt="Question attachment"
                       className="max-w-full h-auto rounded-xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-shadow duration-300"
                     />

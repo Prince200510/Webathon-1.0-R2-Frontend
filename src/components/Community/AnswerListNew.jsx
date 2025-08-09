@@ -12,7 +12,7 @@ const AnswerList = ({ answers, questionAuthorId, currentUserId, onAnswerAccepted
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/answers/${answerId}/vote`,
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/answers/${answerId}/vote`,
         { type },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -30,7 +30,7 @@ const AnswerList = ({ answers, questionAuthorId, currentUserId, onAnswerAccepted
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}/api/community/answers/${answerId}/accept`,
+        `${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}/api/community/answers/${answerId}/accept`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

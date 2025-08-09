@@ -40,7 +40,7 @@ const QuestionList = ({ filters, activeTab, onQuestionClick }) => {
         }
       });
 
-      const response = await axios.get(`${import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'}${endpoint}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'}${endpoint}`, {
         params,
         headers: activeTab === 'my-questions' ? { Authorization: `Bearer ${token}` } : {}
       });

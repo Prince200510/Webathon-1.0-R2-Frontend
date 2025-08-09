@@ -8,7 +8,7 @@ export const useSocket = (user) => {
 
   useEffect(() => {
     if (user?._id) {
-  socket.current = io(import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com', {
+      socket.current = io(import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com', {
         transports: ['websocket', 'polling']
       });
 

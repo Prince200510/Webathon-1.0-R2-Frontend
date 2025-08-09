@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com';
 
 export const api = axios.create({
   baseURL: `${API_URL}/api`,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://team-duo-dare-r2b.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://webathon-1-0-r2-backend.onrender.com'
 
 export const apiClient = axios.create({
   baseURL: `${API_BASE_URL}/api`,

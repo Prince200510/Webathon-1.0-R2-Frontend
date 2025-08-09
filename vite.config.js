@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://team-duo-dare-r2b.onrender.com',
+        target: 'https://webathon-1-0-r2-backend.onrender.com',
         changeOrigin: true
       }
     }
